@@ -212,7 +212,7 @@ The key bindings for `binclock-mode' are:
         (insert "  ")))
 
 (defun binclock-display-lisp-list (time-list)
-  "Display TIME-LIST as lisp lists."
+  "Display TIME-LIST as Lisp lists."
   (loop for value in time-list
         do (insert (prin1-to-string value))
         (insert "  ")))
