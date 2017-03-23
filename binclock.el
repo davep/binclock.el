@@ -6,7 +6,7 @@
 ;; Public Licence, version 2. For details see the file COPYING.
 
 ;;; Commentary:
-;; 
+;;
 ;; binclock displays the current time using a binary display.
 
 ;;; Code:
