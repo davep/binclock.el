@@ -1,6 +1,10 @@
 ;;; binclock.el --- Display the current time using a binary clock.
 ;; Copyright 1999,2000 by Dave Pearson <davep@davep.org>
-;; $Revision: 1.7 $
+
+;; Author: Dave Pearson <davep@davep.org>
+;; Version: 1.7
+;; Keywords: time display
+;; URL: https://github.com/davep/binclock.el
 
 ;; binclock is free software distributed under the terms of the GNU General
 ;; Public Licence, version 2. For details see the file COPYING.
