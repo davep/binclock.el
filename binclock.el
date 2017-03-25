@@ -3,7 +3,7 @@
 
 ;; Author: Dave Pearson <davep@davep.org>
 ;; Version: 1.8
-;; Keywords: time display
+;; Keywords: games, time, display
 ;; URL: https://github.com/davep/binclock.el
 ;; Package-Requires: ((cl-lib "0.5"))
 
