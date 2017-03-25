@@ -1,5 +1,5 @@
 ;;; binclock.el --- Display the current time using a binary clock.
-;; Copyright 1999,2000 by Dave Pearson <davep@davep.org>
+;; Copyright 1999-2017 by Dave Pearson <davep@davep.org>
 
 ;; Author: Dave Pearson <davep@davep.org>
 ;; Version: 1.7
