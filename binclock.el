@@ -2,7 +2,7 @@
 ;; Copyright 1999-2017 by Dave Pearson <davep@davep.org>
 
 ;; Author: Dave Pearson <davep@davep.org>
-;; Version: 1.8
+;; Version: 1.9
 ;; Keywords: games, time, display
 ;; URL: https://github.com/davep/binclock.el
 ;; Package-Requires: ((cl-lib "0.5"))
