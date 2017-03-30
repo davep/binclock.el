@@ -214,7 +214,7 @@ The key bindings for `binclock-mode' are:
 
 ;; Support functions.
 
-(defun* binclock-to-binary (num &optional (bits 8))
+(cl-defun binclock-to-binary (num &optional (bits 8))
   "Convert a positive integer NUM into a binary list. Pad the list out to
 BITS bits. BITS is optional and if not supplied defaults to 8."
   (cl-loop for bit downfrom (1- bits) to 0
