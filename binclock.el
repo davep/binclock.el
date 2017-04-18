@@ -29,12 +29,12 @@
   :prefix "binclock-")
 
 (defcustom binclock-mode-hook nil
-  "*Hooks to run when starting `binclock-mode'."
+  "Hooks to run when starting `binclock-mode'."
   :type  'hook
   :group 'binclock)
 
 (defcustom binclock-display 'binclock-display-zero-and-one
-  "*The format for display the binary values."
+  "The format for display the binary values."
   :type  '(choice (const :tag "Display using 0's and 1's"
                          binclock-display-zero-and-one)
                   (const :tag "Display as a lisp list"
@@ -44,7 +44,7 @@
   :group 'binclock)
 
 (defcustom binclock-clock-type 'binclock-time-bcd
-  "*Type of clock to display."
+  "Type of clock to display."
   :type  '(choice (const :tag "Binary coded decimal"
                          binclock-time-bcd)
                   (const :tag "HH-MM-SS"
@@ -52,7 +52,7 @@
   :group 'binclock)
 
 (defcustom binclock-24hour t
-  "*Should the time be displayed using 12hour or 24hour clock?"
+  "Should the time be displayed using 12hour or 24hour clock?"
   :type '(choice (const :tag "Display using 12 hour clock" nil)
                  (const :tag "Display using 24 hour clock" t))
   :group 'binclock)
