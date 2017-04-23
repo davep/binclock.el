@@ -5,4 +5,4 @@
 
 ## Commentary:
 
-binclock displays the current time using a binary display.
+`binclock.el` displays the current time using a binary display.
