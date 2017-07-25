@@ -179,18 +179,18 @@ The key bindings for `binclock-mode' are:
   "Get the time, in HH:MM:SS format, as a list of binary lists."
   (let ((now (decode-time)))
     (mapcar #'binclock-to-binary
-            (list (binclock-hour-fixup (third now)) (second now) (first now)))))
+            (list (binclock-hour-fixup (cl-third now)) (cl-second now) (cl-first now)))))
 
 (defun binclock-time-bcd ()
   "Get the time, in BCD format, as a list of binary values."
   (let* ((now (decode-time))
-         (hr  (multiple-value-list (cl-floor (binclock-hour-fixup (third now)) 10)))
-         (mn  (multiple-value-list (cl-floor (second now) 10)))
-         (sc  (multiple-value-list (cl-floor (first now) 10))))
+         (hr  (cl-multiple-value-list (cl-floor (binclock-hour-fixup (cl-third now)) 10)))
+         (mn  (cl-multiple-value-list (cl-floor (cl-second now) 10)))
+         (sc  (cl-multiple-value-list (cl-floor (cl-first now) 10))))
     (mapcar #'(lambda (n) (binclock-to-binary n 4))
-            (list (first hr) (second hr)
-                  (first mn) (second mn)
-                  (first sc) (second sc)))))
+            (list (cl-first hr) (cl-second hr)
+                  (cl-first mn) (cl-second mn)
+                  (cl-first sc) (cl-second sc)))))
 
 ;; Clock displays
 
