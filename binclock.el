@@ -207,20 +207,20 @@ The key bindings for `binclock-mode' are:
 (defun binclock-display-zero-and-one (time-list)
   "Display TIME-LIST using 0s and 1s."
   (cl-loop for value in time-list
-     do (insert (binclock-boollist-as-string value ?1 ?0))
-       (insert "  ")))
+           do (insert (binclock-boollist-as-string value ?1 ?0))
+           (insert "  ")))
 
 (defun binclock-display-lisp-list (time-list)
   "Display TIME-LIST as Lisp lists."
   (cl-loop for value in time-list
-     do (insert (prin1-to-string value))
-       (insert "  ")))
+           do (insert (prin1-to-string value))
+           (insert "  ")))
 
 (defun binclock-display-hash-string (time-list)
   "Display TIME-LIST using '#' and '.'."
   (cl-loop for value in time-list
-     do (insert (binclock-boollist-as-string value ?# ?.))
-       (insert "  ")))
+           do (insert (binclock-boollist-as-string value ?# ?.))
+           (insert "  ")))
 
 ;; Support functions.
 
@@ -228,7 +228,7 @@ The key bindings for `binclock-mode' are:
   "Convert a positive integer NUM into a binary list. Pad the list out to
 BITS bits. BITS is optional and if not supplied defaults to 8."
   (cl-loop for bit downfrom (1- bits) to 0
-     collect (not (zerop (logand num (expt 2 bit))))))
+           collect (not (zerop (logand num (expt 2 bit))))))
 
 (defun binclock-boollist-as-string (list on off)
   "Convert LIST (a list of logical values) to a string.
@@ -244,18 +244,18 @@ Use ON for true values and OFF for false values."
 ;; Menu definition.
 
 (easy-menu-define
- binclock-mode-menu binclock-mode-map "Binary clock menu."
- '("Clock"
-   ["Toggle 12/24 hour display"       binclock-toggle-24hour    t]
-   "---"
-   ["Display time in HH:MM:SS format" binclock-set-hh-mm-ss     t]
-   ["Display time in BCD format"      binclock-set-bcd          t]
-   "---"
-   ["Format as lisp lists"            binclock-set-lisp-list    t]
-   ["Format output using 0/1"         binclock-set-zero-and-one t]
-   ["Format output using #/."         binclock-set-hash-string  t]
-   "---"
-   ["Close the clock display"         binclock-quit             t]))
+  binclock-mode-menu binclock-mode-map "Binary clock menu."
+  '("Clock"
+    ["Toggle 12/24 hour display"       binclock-toggle-24hour    t]
+    "---"
+    ["Display time in HH:MM:SS format" binclock-set-hh-mm-ss     t]
+    ["Display time in BCD format"      binclock-set-bcd          t]
+    "---"
+    ["Format as lisp lists"            binclock-set-lisp-list    t]
+    ["Format output using 0/1"         binclock-set-zero-and-one t]
+    ["Format output using #/."         binclock-set-hash-string  t]
+    "---"
+    ["Close the clock display"         binclock-quit             t]))
 
 (provide 'binclock)
 
