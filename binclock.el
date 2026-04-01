@@ -1,11 +1,11 @@
-;;; binclock.el --- Display the current time using a binary clock.
+;;; binclock.el --- Display the current time using a binary clock  -*- lexical-binding: t; -*-
 ;; Copyright 1999-2017 by Dave Pearson <davep@davep.org>
 
 ;; Author: Dave Pearson <davep@davep.org>
 ;; Version: 1.11
 ;; Keywords: games, time, display
 ;; URL: https://github.com/davep/binclock.el
-;; Package-Requires: ((cl-lib "0.5"))
+;; Package-Requires: ((emacs "24.1") (cl-lib "0.5"))
 
 ;; This program is free software: you can redistribute it and/or modify it
 ;; under the terms of the GNU General Public License as published by the
@@ -34,7 +34,7 @@
 ;; Customize options.
 
 (defgroup binclock nil
-  "binclock - Display the time in binary."
+  "Display the current time using a binary clock."
   :group 'games
   :prefix "binclock-")
 
@@ -128,18 +128,18 @@ The key bindings for `binclock-mode' are:
         (old-window (selected-window)))
     (unless (window-live-p binclock-window)
       (setq binclock-window (split-window-vertically (- (window-height) 2))))
-    (setf (selected-window) binclock-window)
+    (select-window binclock-window)
     (setq binclock-buffer (switch-to-buffer binclock-buffer-name))
     (unless binclock-timer-handle
       (setq binclock-timer-handle (run-at-time nil 1 #'binclock-timer)))
     (binclock-mode)
-    (setf (selected-window) old-window)))
+    (select-window old-window)))
 
 (defun binclock-timer ()
   "Update the binary clock display."
   (with-current-buffer binclock-buffer
     (let ((buffer-read-only nil))
-      (setf (buffer-string) "")
+      (erase-buffer)
       (funcall binclock-display (funcall binclock-clock-type)))))
 
 ;; Keyboard response functions.
@@ -207,28 +207,30 @@ The key bindings for `binclock-mode' are:
 (defun binclock-display-zero-and-one (time-list)
   "Display TIME-LIST using 0s and 1s."
   (cl-loop for value in time-list
-     do (insert (binclock-boollist-as-string value ?1 ?0))
-       (insert "  ")))
+           do (insert (binclock-boollist-as-string value ?1 ?0))
+           (insert "  ")))
 
 (defun binclock-display-lisp-list (time-list)
   "Display TIME-LIST as Lisp lists."
   (cl-loop for value in time-list
-     do (insert (prin1-to-string value))
-       (insert "  ")))
+           do (insert (prin1-to-string value))
+           (insert "  ")))
 
 (defun binclock-display-hash-string (time-list)
   "Display TIME-LIST using '#' and '.'."
   (cl-loop for value in time-list
-     do (insert (binclock-boollist-as-string value ?# ?.))
-       (insert "  ")))
+           do (insert (binclock-boollist-as-string value ?# ?.))
+           (insert "  ")))
 
 ;; Support functions.
 
 (cl-defun binclock-to-binary (num &optional (bits 8))
-  "Convert a positive integer NUM into a binary list. Pad the list out to
-BITS bits. BITS is optional and if not supplied defaults to 8."
+  "Convert a positive integer NUM into a binary list.
+
+Pad the list out to BITS bits. BITS is optional and if not supplied
+defaults to 8."
   (cl-loop for bit downfrom (1- bits) to 0
-     collect (not (zerop (logand num (expt 2 bit))))))
+           collect (not (zerop (logand num (expt 2 bit))))))
 
 (defun binclock-boollist-as-string (list on off)
   "Convert LIST (a list of logical values) to a string.
@@ -244,18 +246,18 @@ Use ON for true values and OFF for false values."
 ;; Menu definition.
 
 (easy-menu-define
- binclock-mode-menu binclock-mode-map "Binary clock menu."
- '("Clock"
-   ["Toggle 12/24 hour display"       binclock-toggle-24hour    t]
-   "---"
-   ["Display time in HH:MM:SS format" binclock-set-hh-mm-ss     t]
-   ["Display time in BCD format"      binclock-set-bcd          t]
-   "---"
-   ["Format as lisp lists"            binclock-set-lisp-list    t]
-   ["Format output using 0/1"         binclock-set-zero-and-one t]
-   ["Format output using #/."         binclock-set-hash-string  t]
-   "---"
-   ["Close the clock display"         binclock-quit             t]))
+  binclock-mode-menu binclock-mode-map "Binary clock menu."
+  '("Clock"
+    ["Toggle 12/24 hour display"       binclock-toggle-24hour    t]
+    "---"
+    ["Display time in HH:MM:SS format" binclock-set-hh-mm-ss     t]
+    ["Display time in BCD format"      binclock-set-bcd          t]
+    "---"
+    ["Format as lisp lists"            binclock-set-lisp-list    t]
+    ["Format output using 0/1"         binclock-set-zero-and-one t]
+    ["Format output using #/."         binclock-set-hash-string  t]
+    "---"
+    ["Close the clock display"         binclock-quit             t]))
 
 (provide 'binclock)
 
