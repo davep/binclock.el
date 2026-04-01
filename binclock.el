@@ -1,8 +1,8 @@
 ;;; binclock.el --- Display the current time using a binary clock  -*- lexical-binding: t; -*-
-;; Copyright 1999-2017 by Dave Pearson <davep@davep.org>
+;; Copyright 1999-2026 by Dave Pearson <davep@davep.org>
 
 ;; Author: Dave Pearson <davep@davep.org>
-;; Version: 1.11
+;; Version: 1.12
 ;; Keywords: games, time, display
 ;; URL: https://github.com/davep/binclock.el
 ;; Package-Requires: ((emacs "24.1") (cl-lib "0.5"))
