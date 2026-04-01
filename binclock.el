@@ -1,4 +1,4 @@
-;;; binclock.el --- Display the current time using a binary clock.  -*- lexical-binding: t; -*-
+;;; binclock.el --- Display the current time using a binary clock  -*- lexical-binding: t; -*-
 ;; Copyright 1999-2017 by Dave Pearson <davep@davep.org>
 
 ;; Author: Dave Pearson <davep@davep.org>
