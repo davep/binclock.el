@@ -5,7 +5,7 @@
 ;; Version: 1.11
 ;; Keywords: games, time, display
 ;; URL: https://github.com/davep/binclock.el
-;; Package-Requires: ((cl-lib "0.5"))
+;; Package-Requires: ((emacs "24.1") (cl-lib "0.5"))
 
 ;; This program is free software: you can redistribute it and/or modify it
 ;; under the terms of the GNU General Public License as published by the
