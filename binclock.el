@@ -34,7 +34,7 @@
 ;; Customize options.
 
 (defgroup binclock nil
-  "binclock - Display the time in binary."
+  "Display the current time using a binary clock."
   :group 'games
   :prefix "binclock-")
 
@@ -225,8 +225,10 @@ The key bindings for `binclock-mode' are:
 ;; Support functions.
 
 (cl-defun binclock-to-binary (num &optional (bits 8))
-  "Convert a positive integer NUM into a binary list. Pad the list out to
-BITS bits. BITS is optional and if not supplied defaults to 8."
+  "Convert a positive integer NUM into a binary list.
+
+Pad the list out to BITS bits. BITS is optional and if not supplied
+defaults to 8."
   (cl-loop for bit downfrom (1- bits) to 0
            collect (not (zerop (logand num (expt 2 bit))))))
 
