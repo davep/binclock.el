@@ -128,18 +128,18 @@ The key bindings for `binclock-mode' are:
         (old-window (selected-window)))
     (unless (window-live-p binclock-window)
       (setq binclock-window (split-window-vertically (- (window-height) 2))))
-    (setf (selected-window) binclock-window)
+    (select-window binclock-window)
     (setq binclock-buffer (switch-to-buffer binclock-buffer-name))
     (unless binclock-timer-handle
       (setq binclock-timer-handle (run-at-time nil 1 #'binclock-timer)))
     (binclock-mode)
-    (setf (selected-window) old-window)))
+    (select-window old-window)))
 
 (defun binclock-timer ()
   "Update the binary clock display."
   (with-current-buffer binclock-buffer
     (let ((buffer-read-only nil))
-      (setf (buffer-string) "")
+      (erase-buffer)
       (funcall binclock-display (funcall binclock-clock-type)))))
 
 ;; Keyboard response functions.
